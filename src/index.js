@@ -1,25 +1,19 @@
 import ReactDOM from "react-dom";
 
-const user = {
-  firstname: "john",
-  lastname: "doe"
-};
-
-function getFullname(user) {
-  return user.firstname + " " + user.lastname;
-}
-
-const element = <h1> hello {getFullname(user)} , welcome </h1>;
+//jsx varsayılan olarak injeciton vs xss saldırılarını önler
+/*
+Çünkü varsayılan olarak React DOM, render işlemi öncesinde gömülen değerlerdeki
+<, & gibi bazı özel karakterleri &lt; ve &amp; olacak şekilde dönüştürür.
+Böylece uygulama içerisinde, kullanıcının yazabileceği kötü amaçlı kodların
+enjekte edilmesi engellenmiş olur. Render işlemi öncesi her şey string ifadeye
+dönüştürüldüğünden dolayı, XSS saldırıları engellenmiş olur.
 
 
-//boş etiket tanımlama jsx e ait bir özellik değildir html e aittir örneğin <br/> etiketi
+*/
 
-// aynı şekilde attribute ekleyebiliriz.
-
-const jsxElement = <h1 style={{color:"blue", textAlign:"center"}} />
-// bu stilleri inspect ederek görüntüleyebiliriz.
-
-
+const title = response.potentiallyMaliciousInput;
+// Bu kullanım güvenlidir:
+const element = <h1>{title}</h1>;
 
 
 ReactDOM.render(jsxElement, document.getElementById("root"));
