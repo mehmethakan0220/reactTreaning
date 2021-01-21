@@ -1,77 +1,21 @@
 import ReactDOM from "react-dom";
-
-//jsx varsayılan olarak injeciton vs xss saldırılarını önler
+import React from 'react';
 /*
-Çünkü varsayılan olarak React DOM, render işlemi öncesinde gömülen değerlerdeki
-<, & gibi bazı özel karakterleri &lt; ve &amp; olacak şekilde dönüştürür.
-Böylece uygulama içerisinde, kullanıcının yazabileceği kötü amaçlı kodların
-enjekte edilmesi engellenmiş olur. Render işlemi öncesi her şey string ifadeye
-dönüştürüldüğünden dolayı, XSS saldırıları engellenmiş olur.
+JSX, JavaScript Nesnelerini Temsil Eder
+Babel derleyicisi, JSX kodlarını React.createElement() çağrılarına dönüştürür.
 
-
+Bu nedenle aşağıdaki iki kod örneği de aynı işlemi gerçekleştirir:
 */
+// normal element oluşturma
+const element = <h1 className="greeting">Hoşgeldin! </h1>;
 
-const title = response.potentiallyMaliciousInput;
-// Bu kullanım güvenlidir:
-const element = <h1>{title}</h1>;
+//javascript createElement ile element oluşturma.
+const jsElementTanimlama = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'hojgeldin'
+);
 
-
-ReactDOM.render(jsxElement, document.getElementById("root"));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ReactDOM.render(jsElementTanimlama, document.getElementById("root"));
 
 //
